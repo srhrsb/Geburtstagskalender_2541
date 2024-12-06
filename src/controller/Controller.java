@@ -22,7 +22,6 @@ public class Controller {
      * @return Id
      */
     private String createID( String lastname, String firstname ){
-
        String sub1 =  lastname.substring(0,2);
        String sub2 =  firstname.substring(0,2);
 
