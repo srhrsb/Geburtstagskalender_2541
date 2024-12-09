@@ -7,12 +7,30 @@ public class Birthday {
     private String firstname;
     private String date;
 
-    //ToDo:Klasse vervollständigen
-    //Felder, Constructor, Getter und Setter anlegen
 
+    /**
+     * Konstruktor Überladung mit allen Feldern
+     * @param id ID
+     * @param lastname Nachname
+     * @param firstname Vorname
+     * @param date Datum
+     */
     public Birthday(String id, String lastname, String firstname, String date) {
         this.id = id;
         this.lastname = lastname;
+        this.firstname = firstname;
+        this.date = date;
+    }
+
+
+    /**
+     * Birthday mit 3 Überladungen
+     * @param id ID
+     * @param firstname Vornamen
+     * @param date Datum
+     */
+    public Birthday(String id, String firstname, String date) {
+        this.id = id;
         this.firstname = firstname;
         this.date = date;
     }
