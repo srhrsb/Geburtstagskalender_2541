@@ -13,31 +13,48 @@ public class Controller {
     //Birthday[] birthday = new Birthday[10];
     ArrayList<Birthday> birthdayList;
 
+    /**
+     * Konstruktor - führt initial Anweisungen aus
+     */
     public Controller(){
 
         birthdayList = new ArrayList<>();
-        //Testen
+        //Testen: Objekt von Birthday wird erzeugt als Test
         birthdayList.add( new Birthday("id123", "Böttcher", "Sebastian","27.11.1976") );
         System.out.println( birthdayList.getFirst().getId() );
 
+        //Weiteres Objekt Birthday
         birthdayList.add( new Birthday("id234", "Böttcher", "Jeanette","8.02.1970") );
         System.out.println( birthdayList.get(1).getId() );
 
-        //Id Funktion testen
+        //Id Funktion testen:
+        //1. Id erzeugen mit dem Namen "Johannes Schölch"
         String id = createID("Schölch","Johannes");//erzeugen der ID
 
+        //2. Birthday Objekt mit den Daten von Johannes erzeugen und in der
+        //Liste speichern
         birthdayList.add( new Birthday(id, "Schölch", "Johannes", "25.3.1988"));
 
+        //Das Objekt Birthday mit den Daten von Johannes holen
+        //mit Hilfe der Methode "getBirthdayById"
         Birthday johannes = getBirthdayByID(id);
 
+        //zur Kontrolle Nachnamen ausgeben
         System.out.println(johannes.getLastname());
     }
 
+    /**
+     * Die Liste mit den gespeicherten Geburtstagen (Klasse Birthday)
+     * wird per Schleife durchlaufen, falls ein Objekt Birthday mit der
+     * gesuchten ID vorhanden ist, wird dieses zurückgegeben
+     * @param id
+     * @return
+     */
     private Birthday getBirthdayByID( String id ){
 
         for( Birthday bday : birthdayList){
             //ist das das Objekt mit der gesuchten ID?
-            if(id.equals( bday.getId())){ //Id stimmt überein
+            if(id.equals( bday.getId() ) ){ //Id stimmt überein
                 return bday;
             }
         }
@@ -45,7 +62,11 @@ public class Controller {
         return null;
     }
 
-    //Freiwillige Hausaufgabe
+    /**
+     * Löscht den Geburtstag mit der angegebenen ID
+     * @param id
+     * @return Erfolgsmeldung
+     */
     private boolean deleteBirthdayByID( String id ){
         //Tipp: Listen haben eine remove() Methode
 
