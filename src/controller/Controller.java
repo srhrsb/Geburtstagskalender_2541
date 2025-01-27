@@ -68,12 +68,20 @@ public class Controller {
      * @return Erfolgsmeldung
      */
     private boolean deleteBirthdayByID( String id ){
-        //Tipp: Listen haben eine remove() Methode
+
+        for( Birthday bday : birthdayList){
+            //ist das das Objekt mit der gesuchten ID?
+            if(id.equals( bday.getId() ) ){ //Id stimmt überein -> entfernen
+
+                //Objekt aus Liste löschen und Erfolg als boolean zurückgeben
+                boolean success =  birthdayList.remove( bday );
+                return success;
+
+            }
+        }
 
         return false;
     }
-
-
 
     /**
      * Erzeugt aus den ersten 2 Buchstaben des Nachnamens und den ersten
