@@ -1,6 +1,7 @@
 package controller;
 
 import model.Birthday;
+import view.MainView;
 
 import java.util.ArrayList;
 
@@ -12,11 +13,16 @@ public class Controller {
 
     //Birthday[] birthday = new Birthday[10];
     ArrayList<Birthday> birthdayList;
+    MainView view;
+
+
 
     /**
      * Konstruktor - führt initial Anweisungen aus
      */
     public Controller(){
+
+        view = new MainView( 500,300 );
 
         birthdayList = new ArrayList<>();
         //Testen: Objekt von Birthday wird erzeugt als Test
@@ -49,16 +55,16 @@ public class Controller {
      * @return
      */
     public boolean addBirthday( String firstName, String lastName, String date){
-
-
         //ToDo: Die Id besorgen
+        String id = createID(firstName, lastName);
 
-        //ToDo: Prüfen ob die Id schon existiert
-
+        //ToDo: Prüfen ob die Id schon existiert, wenn ja Methode verlassen
+        if(getBirthdayByID(id) == null){ //ist kein gültiges Objekt zurückgekommen?
+            Birthday bday = new Birthday( id, lastName, firstName, date); //Birthday Objekt erzeugen
+            return birthdayList.add(bday); //Objekt in Liste speichern und Erfolgsmeldung zurückgeben
+        }
         return false;
-
     }
-
 
     /**
      * Die Liste mit den gespeicherten Geburtstagen (Klasse Birthday)
