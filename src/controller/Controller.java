@@ -44,6 +44,23 @@ public class Controller {
     }
 
     /**
+     * Fügt einen Geburtstag zur birthdayList hinzu und prüft
+     * zunächst ob es ein BirthdayObject mit genau dieser erzeugten Id schon existiert
+     * @return
+     */
+    public boolean addBirthday( String firstName, String lastName, String date){
+
+
+        //ToDo: Die Id besorgen
+
+        //ToDo: Prüfen ob die Id schon existiert
+
+        return false;
+
+    }
+
+
+    /**
      * Die Liste mit den gespeicherten Geburtstagen (Klasse Birthday)
      * wird per Schleife durchlaufen, falls ein Objekt Birthday mit der
      * gesuchten ID vorhanden ist, wird dieses zurückgegeben
@@ -58,7 +75,6 @@ public class Controller {
                 return bday;
             }
         }
-
         return null;
     }
 
@@ -76,10 +92,8 @@ public class Controller {
                 //Objekt aus Liste löschen und Erfolg als boolean zurückgeben
                 boolean success =  birthdayList.remove( bday );
                 return success;
-
             }
         }
-
         return false;
     }
 
