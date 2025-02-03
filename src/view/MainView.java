@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class MainView extends JFrame {
 
@@ -12,16 +13,12 @@ public class MainView extends JFrame {
 
     //Konstruktor der die Breite und Höhe des Fensters annimmt
     public MainView( int width, int height ){
-
            setSize(width, height);
-
            setFont( new Font("Arial", Font.PLAIN, 24) );
-
            setTitle("Geburtstagskalender");
-           setDefaultCloseOperation( EXIT_ON_CLOSE );
+           setDefaultCloseOperation( EXIT_ON_CLOSE ); //stellt das Verhalten beim Schließen ein
            addUIComponents();
            setVisible(true);
-
     }
 
     /**
@@ -36,9 +33,13 @@ public class MainView extends JFrame {
 
         //Button erzeugen
          addBtn = new JButton("Hinzufügen");
+         deleteBtn = new JButton("Löschen");
+         searchBtn = new JButton("Suchen");
 
-         //hinzufügen des Buttons zum BottomPanel
+         //hinzufügen der Button zum BottomPanel
          bottomPanel.add( addBtn);
+         bottomPanel.add( deleteBtn);
+         bottomPanel.add( searchBtn);
 
          //Gridlayout für Toppanel einstellen
         topPanel.setLayout( new GridLayout(3, 2, 5, 10) );
@@ -46,8 +47,6 @@ public class MainView extends JFrame {
 
 
          //Textfelder und Label
-         //ToDo: 3 Label + Textfelder erzeugen für unsere Daten Nachname, Vorname, Datum
-
         JLabel firstNameLabel = new JLabel("Vorname");
         firstNameTf = new JTextField();
 
@@ -71,6 +70,22 @@ public class MainView extends JFrame {
          add(bottomPanel, BorderLayout.SOUTH);
 
     }
+
+
+    public void addOnAddBirthdayAction( ActionListener listener ){
+        addBtn.addActionListener( listener);
+    }
+
+    public void addOnDeleteBirthdayAction( ActionListener listener ){
+        deleteBtn.addActionListener( listener);
+    }
+
+    public void addOnSearchBirthdayAction( ActionListener listener ){
+        searchBtn.addActionListener( listener);
+    }
+
+
+
 
 
 

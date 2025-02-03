@@ -3,6 +3,7 @@ package controller;
 import model.Birthday;
 import view.MainView;
 
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 
@@ -22,7 +23,12 @@ public class Controller {
      */
     public Controller(){
 
-        view = new MainView( 500,300 );
+        view = new MainView( 400,210 );
+
+        //Eventlistener bei den Button im View anmelden
+        view.addOnAddBirthdayAction( this::onAddAction );
+        view.addOnDeleteBirthdayAction( this::onDeleteAction );
+        view.addOnSearchBirthdayAction( this::onSearchAction );
 
         birthdayList = new ArrayList<>();
         //Testen: Objekt von Birthday wird erzeugt als Test
@@ -49,6 +55,39 @@ public class Controller {
         System.out.println(johannes.getLastname());
     }
 
+    //Actions------------------------------------------------------------
+
+    /**
+     * Aufgerufen via Event des "AddButton"
+     * @param event Event-Objekt
+     */
+    private void onAddAction( ActionEvent event ){
+        System.out.println( event.getActionCommand() );
+
+
+    }
+
+    /**
+     * Aufgerufen via Event des "DeleteButton"
+     * @param event Event-Objekt
+     */
+    private void onDeleteAction( ActionEvent event ){
+        System.out.println( event.getActionCommand() );
+
+
+    }
+
+    /**
+     * Aufgerufen via Event des "SearchButton"
+     * @param event Event-Objekt
+     */
+    private void onSearchAction( ActionEvent event ){
+        System.out.println( event.getActionCommand() );
+
+
+    }
+
+    //---Add Methoden
     /**
      * Fügt einen Geburtstag zur birthdayList hinzu und prüft
      * zunächst ob es ein BirthdayObject mit genau dieser erzeugten Id schon existiert
