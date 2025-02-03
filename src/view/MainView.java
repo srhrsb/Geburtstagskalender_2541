@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainView extends JFrame {
@@ -74,7 +75,10 @@ public class MainView extends JFrame {
 
     public void addOnAddBirthdayAction( ActionListener listener ){
         addBtn.addActionListener( listener);
+
+
     }
+
 
     public void addOnDeleteBirthdayAction( ActionListener listener ){
         deleteBtn.addActionListener( listener);
