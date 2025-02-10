@@ -10,7 +10,7 @@ public class MainView extends JFrame {
 
     private JButton addBtn, deleteBtn, searchBtn;
 
-    private JTextField firstNameTf, lastNameTf, dateTf;
+    private JTextField idTf, firstNameTf, lastNameTf, dateTf;
 
     //Konstruktor der die Breite und Höhe des Fensters annimmt
     public MainView( int width, int height ){
@@ -43,11 +43,13 @@ public class MainView extends JFrame {
          bottomPanel.add( searchBtn);
 
          //Gridlayout für Toppanel einstellen
-        topPanel.setLayout( new GridLayout(3, 2, 5, 10) );
+        topPanel.setLayout( new GridLayout(4, 2, 5, 10) );
         topPanel.setBorder( new EmptyBorder(5,5,5,5));
 
+        //Textfelder und Label
+        JLabel idLabel = new JLabel("ID");
+        idTf = new JTextField();
 
-         //Textfelder und Label
         JLabel firstNameLabel = new JLabel("Vorname");
         firstNameTf = new JTextField();
 
@@ -57,8 +59,11 @@ public class MainView extends JFrame {
         JLabel dateLabel = new JLabel("Datum");
         dateTf = new JTextField();
 
-         topPanel.add(firstNameLabel);
-         topPanel.add(firstNameTf);
+        topPanel.add(idLabel);
+        topPanel.add(idTf);
+
+        topPanel.add(firstNameLabel);
+        topPanel.add(firstNameTf);
 
         topPanel.add(lastNameLabel);
         topPanel.add(lastNameTf);
@@ -84,11 +89,32 @@ public class MainView extends JFrame {
         searchBtn.addActionListener( listener);
     }
 
+    public String getFirstName(){
+        return firstNameTf.getText();
+    }
 
+    public String getLastName(){
+        return lastNameTf.getText();
+    }
 
+    public String getDate(){
+        return dateTf.getText();
+    }
 
+    public String getID(){
+        return idTf.getText();
+    }
 
+    public void setID( String id){
+        idTf.setText( id );
+    }
 
+    public void showInfoMessage( String message ){
+        JOptionPane.showMessageDialog( this, message, "Info", JOptionPane.INFORMATION_MESSAGE );
+    }
 
+    public void showErrorMessage( String message ){
+        JOptionPane.showMessageDialog( this, message, "Fehler", JOptionPane.ERROR_MESSAGE );
+    }
 
 }

@@ -16,6 +16,8 @@ public class Controller {
     ArrayList<Birthday> birthdayList;
     MainView view;
 
+    //Kostanten----------------------
+    private final int MIN_TEXTFIELD_LENGTH = 1;
 
 
     /**
@@ -64,7 +66,35 @@ public class Controller {
     private void onAddAction( ActionEvent event ){
         System.out.println( event.getActionCommand() );
 
+        //Daten aus Textfelder holen
+        String firstname = view.getFirstName().trim(); //trim entfernt die Leerzeichen bzw. Umbrüche
+        String lastname = view.getLastName().trim();
+        String date = view.getDate();
 
+        //Prüfen ob Daten zulässig
+        if( isValidText(firstname) && isValidText(lastname) && isValidText(date) ){
+
+            //Daten an Methode AddBirthday übergeben
+            boolean success = addBirthday( firstname, lastname, date );
+
+            //Nutzer informieren, dass es geklappt hat einen Geburtstag hinzuzufügen
+            if(success){
+                view.showInfoMessage("Geburtstag von "+firstname+" "+lastname+" wurde hinzugefügt.");
+            }
+            else{
+                //nicht geklappt
+                view.showErrorMessage("Es ist ein Fehler aufgetreten.");
+            }
+        }
+        else{
+            //Eingabe falsch
+            view.showErrorMessage("Bitte überprüfen Sie die Eingaben in den Textfeldern");
+        }
+
+    }
+
+    private boolean isValidText( String text ){
+        return text.length() > MIN_TEXTFIELD_LENGTH;
     }
 
     /**
@@ -96,6 +126,7 @@ public class Controller {
     public boolean addBirthday( String firstName, String lastName, String date){
         //ToDo: Die Id besorgen
         String id = createID(firstName, lastName);
+        view.setID(id);
 
         //ToDo: Prüfen ob die Id schon existiert, wenn ja Methode verlassen
         if(getBirthdayByID(id) == null){ //ist kein gültiges Objekt zurückgekommen?
