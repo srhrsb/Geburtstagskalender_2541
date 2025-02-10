@@ -72,13 +72,9 @@ public class MainView extends JFrame {
 
     }
 
-
     public void addOnAddBirthdayAction( ActionListener listener ){
         addBtn.addActionListener( listener);
-
-
     }
-
 
     public void addOnDeleteBirthdayAction( ActionListener listener ){
         deleteBtn.addActionListener( listener);
