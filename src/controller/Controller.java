@@ -31,6 +31,7 @@ public class Controller {
         view.addOnAddBirthdayAction( this::onAddAction );
         view.addOnDeleteBirthdayAction( this::onDeleteAction );
         view.addOnSearchBirthdayAction( this::onSearchAction );
+        view.addOnShowAllAction( this::onShowAllAction );
 
         birthdayList = new ArrayList<>();
         //Testen: Objekt von Birthday wird erzeugt als Test
@@ -115,6 +116,24 @@ public class Controller {
         System.out.println( event.getActionCommand() );
 
 
+    }
+
+    /**
+     * Aufgerufen via Event des "Zeige Alles"
+     * @param event Event-Objekt
+     */
+    private void onShowAllAction( ActionEvent event ){
+        System.out.println( event.getActionCommand() );
+
+        String text = "Alle Geburtstage:\n\n";
+
+        for( Birthday bday : birthdayList){
+            text += bday.getFirstname() + " ";
+            text += bday.getLastname() + " ";
+            text += bday.getDate() + "\n\n";
+        }
+
+        view.showInfoMessage(text);
     }
 
     //---Add Methoden

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class MainView extends JFrame {
 
-    private JButton addBtn, deleteBtn, searchBtn;
+    private JButton addBtn, deleteBtn, searchBtn, showAllBtn;
 
     private JTextField idTf, firstNameTf, lastNameTf, dateTf;
 
@@ -33,16 +33,18 @@ public class MainView extends JFrame {
         JPanel bottomPanel = new JPanel();
 
         //Button erzeugen
-         addBtn = new JButton("Hinzufügen");
-         deleteBtn = new JButton("Löschen");
-         searchBtn = new JButton("Suchen");
+        addBtn = new JButton("Hinzufügen");
+        deleteBtn = new JButton("Löschen");
+        searchBtn = new JButton("Suchen");
+        showAllBtn = new JButton("Alle Anzeigen");
 
-         //hinzufügen der Button zum BottomPanel
-         bottomPanel.add( addBtn);
-         bottomPanel.add( deleteBtn);
-         bottomPanel.add( searchBtn);
+        //hinzufügen der Button zum BottomPanel
+        bottomPanel.add( addBtn );
+        bottomPanel.add( deleteBtn );
+        bottomPanel.add( searchBtn );
+        bottomPanel.add( showAllBtn );
 
-         //Gridlayout für Toppanel einstellen
+        //Gridlayout für Toppanel einstellen
         topPanel.setLayout( new GridLayout(4, 2, 5, 10) );
         topPanel.setBorder( new EmptyBorder(5,5,5,5));
 
@@ -87,6 +89,10 @@ public class MainView extends JFrame {
 
     public void addOnSearchBirthdayAction( ActionListener listener ){
         searchBtn.addActionListener( listener);
+    }
+
+    public void addOnShowAllAction( ActionListener listener ){
+        showAllBtn.addActionListener( listener);
     }
 
     public String getFirstName(){
