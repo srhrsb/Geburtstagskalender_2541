@@ -14,20 +14,20 @@ public class BirthdayDAO {
     private ArrayList<Birthday> load(){
          ArrayList<Birthday> list = new ArrayList<>();
 
-        //1. Zeilweise durch Datei laufen
+        //2. Zeilweise durch Datei laufen
 
-        //2. Für jede Zeile aus den Daten ein Objekt von Birthday erzeugen
+        //3. Für jede Zeile aus den Daten ein Objekt von Birthday erzeugen
 
-        //3. Objekt der BirthdayList hinzufügen
+        //4. Objekt der BirthdayList hinzufügen
 
         return list;
     }
 
     private void save(){
 
-        //1. Objekte aus der Liste holen und mit Schleife durchlaufen
+        //2. Objekte aus der Liste holen und mit Schleife durchlaufen
 
-        //2. Zeilweise jeden Listeneintrag via Getter in die Datei schreiben
+        //3. Zeilweise jeden Listeneintrag via Getter in die Datei schreiben
 
     }
 
