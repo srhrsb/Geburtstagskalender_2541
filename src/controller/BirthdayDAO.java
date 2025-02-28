@@ -14,7 +14,7 @@ public class BirthdayDAO {
     private ArrayList<Birthday> load(){
          ArrayList<Birthday> list = new ArrayList<>();
 
-        //2. Zeilweise durch Datei laufen
+        //2. Zeilenweise durch Datei laufen
 
         //3. Für jede Zeile aus den Daten ein Objekt von Birthday erzeugen
 
@@ -27,7 +27,7 @@ public class BirthdayDAO {
 
         //2. Objekte aus der Liste holen und mit Schleife durchlaufen
 
-        //3. Zeilweise jeden Listeneintrag via Getter in die Datei schreiben
+        //3. Zeilenweise jeden Listeneintrag via Getter in die Datei schreiben
 
     }
 
