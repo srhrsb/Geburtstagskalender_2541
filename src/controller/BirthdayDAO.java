@@ -2,6 +2,8 @@ package controller;
 
 import model.Birthday;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class BirthdayDAO {
@@ -14,6 +16,9 @@ public class BirthdayDAO {
     private ArrayList<Birthday> load(){
          ArrayList<Birthday> list = new ArrayList<>();
 
+
+        //1. Exception Handlling (Fehlerbehandlung)
+
         //2. Zeilenweise durch Datei laufen
 
         //3. Für jede Zeile aus den Daten ein Objekt von Birthday erzeugen
@@ -24,15 +29,19 @@ public class BirthdayDAO {
     }
 
     private void save(){
+        //1. Exception Handlling (Fehlerbehandlung)
+        FileWriter filewriter = null;
+        try{
+            filewriter = new FileWriter( "save.csv");
+        }
+        catch( IOException e){
+            System.err.println("Fehler: " + e.getMessage());
+        }
 
         //2. Objekte aus der Liste holen und mit Schleife durchlaufen
 
         //3. Zeilenweise jeden Listeneintrag via Getter in die Datei schreiben
-
     }
-
-
-
 
     /**
      * Fügt einen Geburtstag zur birthdayList hinzu und prüft
