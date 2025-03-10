@@ -95,7 +95,6 @@ public class Controller {
         else{
             view.showErrorMessage("Der Geburtstag konnte nicht gelöscht werden");
         }
-
     }
 
     /**

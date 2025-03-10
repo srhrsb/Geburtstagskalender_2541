@@ -16,8 +16,7 @@ public class BirthdayDAO {
     private ArrayList<Birthday> load(){
          ArrayList<Birthday> list = new ArrayList<>();
 
-
-        //1. Exception Handlling (Fehlerbehandlung)
+        //1. Exception Handling (Fehlerbehandlung)
 
         //2. Zeilenweise durch Datei laufen
 
@@ -29,17 +28,21 @@ public class BirthdayDAO {
     }
 
     private void save(){
-        //1. Exception Handlling (Fehlerbehandlung)
+        //1. Exception Handling (Fehlerbehandlung)
         FileWriter filewriter = null;
+
         try{
             filewriter = new FileWriter( "save.csv");
         }
         catch( IOException e){
             System.err.println("Fehler: " + e.getMessage());
         }
+        finally{
+
+
+        }
 
         //2. Objekte aus der Liste holen und mit Schleife durchlaufen
-
         //3. Zeilenweise jeden Listeneintrag via Getter in die Datei schreiben
     }
 
