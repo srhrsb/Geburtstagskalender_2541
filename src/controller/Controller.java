@@ -58,6 +58,7 @@ public class Controller {
 
             //Nutzer informieren, dass es geklappt hat einen Geburtstag hinzuzufügen
             if(success){
+                dao.save();
                 view.showInfoMessage("Geburtstag von "+firstname+" "+lastname+" wurde hinzugefügt.");
             }
             else{
@@ -90,6 +91,7 @@ public class Controller {
         var success = dao.deleteBirthdayByID(id);
 
         if(success){
+            dao.save();
             view.showInfoMessage("Der Geburtstag wurde gelöscht");
         }
         else{

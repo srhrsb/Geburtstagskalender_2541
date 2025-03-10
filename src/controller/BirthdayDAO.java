@@ -2,48 +2,114 @@ package controller;
 
 import model.Birthday;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class BirthdayDAO {
     private ArrayList<Birthday> birthdayList;
+    private final String PATH = "save.csv";
+    private final String SEPARATOR = ",";
 
     public BirthdayDAO() {
         birthdayList = load();
     }
 
     private ArrayList<Birthday> load(){
-         ArrayList<Birthday> list = new ArrayList<>();
+         ArrayList<Birthday> list = new ArrayList<>(); //leer Liste
 
+        FileReader fileReader = null;
         //1. Exception Handling (Fehlerbehandlung)
+        try {
+            fileReader = new FileReader( PATH );
 
-        //2. Zeilenweise durch Datei laufen
+            BufferedReader bufferedReader = new BufferedReader( fileReader );
 
-        //3. Für jede Zeile aus den Daten ein Objekt von Birthday erzeugen
+            String line;
 
-        //4. Objekt der BirthdayList hinzufügen
+            //2. Zeilenweise durch Datei laufen
+            while( (line = bufferedReader.readLine() ) != null){
 
-        return list;
-    }
+                //line ist immer die aktuelle Zeile
+                //ToDo: Spliten Sie die Zeile line in ein Array mit den Einzeldaten
+                String[] data = line.split(SEPARATOR);
 
-    private void save(){
-        //1. Exception Handling (Fehlerbehandlung)
-        FileWriter filewriter = null;
-
-        try{
-            filewriter = new FileWriter( "save.csv");
+                //3. Für jede Zeile aus den Daten ein Objekt von Birthday erzeugen
+                //4. Objekt der BirthdayList hinzufügen
+                birthdayList.add( new Birthday(
+                                        data[0],
+                                        data[1],
+                                        data[2],
+                                        data[3]
+                                   )
+                                );
+            }
         }
         catch( IOException e){
             System.err.println("Fehler: " + e.getMessage());
         }
         finally{
-
-
+            if(fileReader!= null){
+                try {
+                    fileReader.close();
+                } catch (IOException e) {
+                    System.err.println("Error" + e.getMessage());
+                }
+            }
         }
 
-        //2. Objekte aus der Liste holen und mit Schleife durchlaufen
-        //3. Zeilenweise jeden Listeneintrag via Getter in die Datei schreiben
+
+
+
+
+
+
+
+
+        return list;
+    }
+
+    public void save(){
+        //1. Exception Handling (Fehlerbehandlung)
+        FileWriter filewriter = null;
+
+        try{
+            filewriter = new FileWriter( PATH );
+
+            //ToDo: Durchlaufen Sie die Arraylist birthdayList und legen sie
+            //ToDo: zunächst lokale Variablen mit den jeweils zu speichernden Daten an
+
+            //2. Objekte aus der Liste holen und mit Schleife durchlaufen
+            for( var bday : birthdayList){
+
+                //3. Zeilenweise jeden Listeneintrag via Getter in die Datei schreiben
+                if(bday != null) {
+                    String id = bday.getId();
+                    String lastname = bday.getLastname();
+                    String firstname = bday.getFirstname();
+                    String date = bday.getDate();
+
+                    String line = id +SEPARATOR+lastname+SEPARATOR+firstname+SEPARATOR+date+System.lineSeparator();
+                    filewriter.write(line);
+                }
+            }
+        }
+        catch( IOException e){
+            System.err.println("Fehler: " + e.getMessage());
+        }
+        finally{
+            if(filewriter!= null){
+                try {
+                    filewriter.close();
+                } catch (IOException e) {
+                    System.err.println("Error" + e.getMessage());
+                }
+            }
+        }
+
+        //ToDo: Sorgen Sie dafür, dass neu hinzugefügte Geburtstage sofort gespeichert werden
     }
 
     /**
