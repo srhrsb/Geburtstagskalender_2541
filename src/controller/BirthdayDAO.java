@@ -38,7 +38,7 @@ public class BirthdayDAO {
 
                 //3. Für jede Zeile aus den Daten ein Objekt von Birthday erzeugen
                 //4. Objekt der BirthdayList hinzufügen
-                birthdayList.add( new Birthday(
+                list.add( new Birthday(
                                         data[0],
                                         data[1],
                                         data[2],
@@ -59,14 +59,6 @@ public class BirthdayDAO {
                 }
             }
         }
-
-
-
-
-
-
-
-
 
         return list;
     }
